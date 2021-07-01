@@ -1,7 +1,7 @@
 import "./App.css";
 import { Grid, Typography } from "@material-ui/core";
 import hero from "./assets/images/hero.svg";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const initialMap = {
 	0: [
@@ -197,8 +197,30 @@ const move = (direction, map, setMap) => {
 	});
 };
 
+const handleKeyUp = (e, map, setMap) => {
+	console.log(e);
+	if (e.key === "ArrowUp") {
+		move("UP", map, setMap);
+	} else if (e.key === "ArrowDown") {
+		move("DOWN", map, setMap);
+	} else if (e.key === "ArrowLeft") {
+		move("LEFT", map, setMap);
+	} else if (e.key === "ArrowRight") {
+		move("RIGHT", map, setMap);
+	}
+};
+
 function App() {
 	const [map, setMap] = useState(initialMap);
+
+	useEffect(() => {
+		window.addEventListener("keyup", (e) => handleKeyUp(e, map, setMap));
+
+		return () =>
+			window.removeEventListener("keyup", (e) =>
+				handleKeyUp(e, map, setMap)
+			);
+	}, []);
 
 	return (
 		<Grid
@@ -214,7 +236,7 @@ function App() {
 					Map
 				</Typography>
 				<div style={{ backgroundColor: "yellow" }}>
-					<table>
+					<table className="map">
 						<tbody>{createMap(map)}</tbody>
 					</table>
 				</div>
