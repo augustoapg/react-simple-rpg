@@ -33,7 +33,6 @@ const Player = () => {
 			</Grid>
 			<Grid item xs={12}>
 				{displayPlayerStats(playerStats)}
-				{/* <div>HP: {playerStats.hp}</div> */}
 			</Grid>
 		</Grid>
 	);
