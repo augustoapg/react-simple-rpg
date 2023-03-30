@@ -1,0 +1,36 @@
+.map {
+	border: 1px solid black;
+	border-spacing: 0;
+}
+
+.map tr td {
+    height: 2em;
+	width: 2em;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.map tr td svg {
+    height: 100%;
+    width: 100%;
+}
+
+.map tr td.path {
+	background-color: white;
+}
+
+.map tr td.wall {
+	background-color: black;
+}
+
+.map tr td svg {
+	height: 80%;
+	width: 80%;
+	display: block;
+	margin: 0 auto;
+}
+
+.container {
+	height: 100%;
+	width: 100% !important;
+}
